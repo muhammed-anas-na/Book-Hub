@@ -1,6 +1,7 @@
 // components/Header.js
 
 import Link from 'next/link';
+import HeaderButton from './HeaderButton';
 
 const Header = () => {
   return (
@@ -25,13 +26,7 @@ const Header = () => {
         </nav>
 
         {/* Call to Action Button */}
-        <div>
-          <button>
-            <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition font-sans">
-             Sign in →
-            </span>
-          </button>
-        </div>
+          <HeaderButton/>
       </div>
     </header>
   );

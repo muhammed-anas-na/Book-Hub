@@ -8,7 +8,7 @@ const LandingPage = () => {
                 {/* Left Section */}
                 <div className="space-y-6">
                     <h1 className="text-3xl md:text-6xl font-bold leading-tight font-Tangerine">
-                        Your Next Read is Just a <span className="text-gray-400 lg:border-2 lg:px-1 cursor-pointer">Tap</span> away
+                        Your Next Read is Just a <Link href={"/discover-books"} className="text-gray-400 lg:border-2 lg:px-1 cursor-pointer">Tap</Link> away
                     </h1>
                     <div className="space-y-4">
                         <div className="flex items-start">
