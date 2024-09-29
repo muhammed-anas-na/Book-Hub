@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'Tangerine': ['Tangerine', 'PlaywriteDEGrund'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
