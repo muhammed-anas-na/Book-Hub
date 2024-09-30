@@ -5,7 +5,7 @@ import HeaderButton from './HeaderButton';
 
 const Header = () => {
   return (
-    <header className=" fixed top-0 left-0 right-0 bg-transparent z-50 border xl:mx-96 mx-5 my-5 font-Tangerine rounded-full">
+    <header className="fixed top-0 left-0 right-0 bg-white bg-opacity-20 z-50 border xl:mx-96 mx-5 my-5 font-Tangerine rounded-full">
       <div className="flex justify-between items-center max-w-7xl mx-auto md:p-2 p-1">
         {/* Logo Section */}
         <div className="flex items-center">

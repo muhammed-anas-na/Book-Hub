@@ -4,27 +4,42 @@ import { auth, provider,signInWithPopup } from "../../../firebase";
 import { useState,useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import { LOGIN_WITH_GOOGLE_FN } from "../../../Axios/methods/POST";
 
 export default function Login() {
-    //const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const {setUser} = useContext(UserContext);
     const router = useRouter();
     async function handleSignIn(){
+        setIsLoading(true);
         try {
             const result = await signInWithPopup(auth, provider);
-            // This gives you a Google Access Token. You can use it to access Google APIs.
-            // const credential = result.credential;
-            setUser({
+            const response = await LOGIN_WITH_GOOGLE_FN({
                 token:result.user.accessToken,
                 displayName:result.user.displayName,
                 email: result.user.email,
                 photURL: result.user.photoURL,
             })
-
+            if (response.data.success) {
+                setUser({
+                    token:result.user.accessToken,
+                    displayName:result.user.displayName,
+                    email: result.user.email,
+                    photURL: result.user.photoURL,
+                })
+                setIsLoading(false);
+                router.push('/');
+              } else {
+                setIsLoading(false);
+                throw new Error('Failed to set authentication cookie');
+              }
+            setIsLoading(false)
             router.push('/')
           } catch (error) {
             // Handle Errors here.
             console.error("Error during sign-in:", error);
+            setIsLoading(false);
           }
     }
     return (
@@ -52,8 +67,10 @@ export default function Login() {
                 >New to our platform?</Link> */}
                 <button 
                 onClick={handleSignIn}
-                className="md:w-72 my-5 bg-black text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800">
-                    Signin with Google →
+                className="md:w-72 my-5 bg-black text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 flex gap-3">
+                    Signin with Google {
+                        isLoading ? (<Loader2 className="animate-spin"/>) : (<>→</>)
+                    }
                 </button>
 
             </div>
