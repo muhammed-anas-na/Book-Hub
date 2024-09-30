@@ -16,7 +16,11 @@ export default function AddBooks() {
     const [description, setDescription] = useState("");
     const [author, setAuthor] = useState("");
     const [willingTo, setWillingTo] = useState("");
-    const [location, setLocation] = useState(user?.locationInText);
+    const [location, setLocation] = useState({
+        locationInText: user?.locationInText,
+        latitude:"",
+        longitude:""
+    });
     const [books, setBooks] = useState([]);
     const [showList, setShowList] = useState(false);
     const [selectedBookCover, setSelectedBookCover] = useState("/image.png")
@@ -36,6 +40,7 @@ export default function AddBooks() {
     }
 
     async function handleAddBooks() {
+        setIsLoading(true)
         try{
             const response = await AddBook_FN({
                 title,
@@ -45,8 +50,10 @@ export default function AddBooks() {
                 location,
                 selectedBookCover,
             })
+            setIsLoading(false)
         }catch(err){
-
+            console.log(err);
+            setIsLoading(false);
         }
     }
 
@@ -77,6 +84,7 @@ export default function AddBooks() {
 
                 <label htmlFor="description" className="mt-4 text-sm font-semibold">Description</label>
                 <textarea 
+                    placeholder="(Optional)"
                    value={description}
                    onChange={(e)=>setDescription(e.target.value)}
                     name="description"
@@ -95,7 +103,7 @@ export default function AddBooks() {
                     <option  value="Rent">Rent</option>
                 </select>
                 <div className="relative w-72">
-                <BookLocationInput location={location} setLocation={setLocation}/>
+                <BookLocationInput location={location.locationInText} setLocation={setLocation}/>
                 </div>
 
                 <button

@@ -20,17 +20,18 @@ export default function BookLocationInput({ location, setLocation }) {
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxToken}`
       );
       setSuggestions(response.data.features);
+      console.log(response.data);
       setShowList(true);
     } catch (error) {
       console.error("Error fetching location:", error);
       setShowList(false);
     }
   }
-
   return (
     <>
       <label htmlFor="location" className="mt-8 text-sm font-semibold">Location</label>
       <input
+      placeholder="(optional)"
         value={location}
         onChange={(e) => {
           setLocation(e.target.value);
@@ -49,7 +50,11 @@ export default function BookLocationInput({ location, setLocation }) {
               key={place.id}
               className="p-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => {
-                setLocation(place.place_name); // Set location to selected place
+                setLocation({
+                  locationInText:place.place_name,
+                  latitude: place.center[1],
+                  longitude: place.center[0]
+                });
                 setShowList(false); // Hide suggestions
               }}
             >
