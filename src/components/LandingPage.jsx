@@ -14,19 +14,19 @@ const LandingPage = () => {
                         <div className="flex items-start">
                             <span className="text-blue-500 text-xl mr-2">🌆</span>
                             <p className="md:text-lg text-xs">
-                                Planning to live and work in a new city? Your first time arrival can be <strong>extremely time-consuming</strong> and overwhelming.
+                            Discover a treasure trove of books right in your neighborhood. Connect with fellow readers and access thousands of books without buying new ones.
                             </p>
                         </div>
                         <div className="flex items-start">
                             <span className="text-yellow-500 text-xl mr-2">✂️</span>
                             <p className="md:text-lg text-xs">
-                                Every day spent figuring out tedious things yourself, you're losing time and money building your company.
+                            Why buy when you can borrow? Save hundreds of dollars annually while enjoying an endless variety of books from your local community's personal libraries.
                             </p>
                         </div>
                         <div className="flex items-start">
                             <span className="text-yellow-500 text-xl mr-2">⚡️</span>
                             <p className="md:text-lg text-xs">
-                                NomadKit is a collection of <strong>personal handwritten digital guides</strong> to help you feel at home in digital nomad cities in less than 24 hours.
+                            Join a vibrant community of book lovers. Exchange stories and build meaningful connections with readers who share your passion.
                             </p>
                         </div>
                     </div>

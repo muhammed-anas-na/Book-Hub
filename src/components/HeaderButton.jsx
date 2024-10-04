@@ -3,7 +3,9 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-import { getLocationFromPoints_Fn, checkIfLoggedIn_Fn } from "../../Axios/methods/POST";
+import { getLocationFromPointsAndUpdateUser_Fn } from "../../Axios/methods/POST";
+import { FaUserAlt } from 'react-icons/fa';
+
 export default function HeaderButton() {
     const { user, setUser } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
@@ -16,10 +18,10 @@ export default function HeaderButton() {
                 const longitude = position.coords.longitude;
                 console.log("Latitude: " + latitude);
                 console.log("Longitude: " + longitude);
-                const response = await getLocationFromPoints_Fn(latitude, longitude);
+                const response = await getLocationFromPointsAndUpdateUser_Fn(latitude, longitude);
                 const location = response.data.locationName;
                 console.log(location)
-                setUser({ ...user, locationInText:location })
+                setUser({ ...user, locationInText:location, latitude, longitude})
                 setIsLoading(false);
             }, (err) => {
                 console.log(err);
@@ -31,29 +33,22 @@ export default function HeaderButton() {
         }
     }
 
-
-
-    useEffect(()=>{
-        async function checkIfLoggedIn(){
-            try{
-                const {data} = await checkIfLoggedIn_Fn();
-                setUser({...data});
-            }catch(err){
-                console.log("Not logged in");
-            }
-        }
-        checkIfLoggedIn()
-    },[])
     return (
         <div>
             {
                 user?.displayName ? (
-                    user.locationInText ? (
+                    user?.locationInText ? (
+                        <div className="flex items-center gap-2">
                         <button>
-                            <span className="items-center bg-black text-white px-2 py-1 rounded-full text-sm font-semibold hover:bg-gray-800 transition font-sans flex gap-2">
+                            <span title={user.locationInText} className="items-center bg-black text-white px-2 py-1 rounded-full text-sm font-semibold hover:bg-gray-800 transition font-sans flex gap-2">
                                 {user.locationInText.slice(0,10)}
                             </span>
                         </button>
+                            <Link href={'/profile'}>
+                            <FaUserAlt/>
+                            </Link>
+                        </div>
+                        
                     ) : (
                         <button onClick={getLocation}>
                             <span className="items-center bg-black text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition font-sans flex gap-2">
@@ -62,7 +57,7 @@ export default function HeaderButton() {
                         </button>
                     )
                 ) : (
-                    <Link href={"/signin"}>
+                    <Link href={"/signin"} className="hover:cursor-pointer">
                         <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition font-sans">
                             Sign in →
                         </span>

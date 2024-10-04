@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import { TbCurrentLocation } from "react-icons/tb";
+import { getLocationFromPoints_Fn } from "../../Axios/methods/POST";
 
 export default function BookLocationInput({ location, setLocation }) {
   const [suggestions, setSuggestions] = useState([]);
@@ -27,20 +29,52 @@ export default function BookLocationInput({ location, setLocation }) {
       setShowList(false);
     }
   }
+
+  //Get current location
+  async function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log("Here")
+        const response = await getLocationFromPoints_Fn(latitude, longitude);
+        const location = response.data;
+        console.log(location)
+        setLocation({
+          latitude,
+          longitude,
+          locationInText: location
+        })
+      }, (err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+      setIsLoading(false);
+    }
+  }
+
+
   return (
     <>
       <label htmlFor="location" className="mt-8 text-sm font-semibold">Location</label>
-      <input
-      placeholder="(optional)"
-        value={location}
-        onChange={(e) => {
-          setLocation(e.target.value);
-          fetchLocation(e.target.value); // Fetch location as user types
-        }}
-        type="text"
-        name="location"
-        className="border rounded-lg focus:outline-0 focus:border-green-800 w-72 p-1"
-      />
+      <div className="flex items-center gap-1">
+        <input
+          placeholder="(optional)"
+          value={location}
+          onChange={(e) => {
+            setLocation(e.target.value);
+            fetchLocation(e.target.value); // Fetch location as user types
+          }}
+          type="text"
+          name="location"
+          className="border rounded-lg focus:outline-0 focus:border-green-800 w-72 p-1"
+        />
+        <TbCurrentLocation className="hover:cursor-pointer border w-8 h-8" onClick={getLocation} />
+      </div>
+
+
 
       {/* Display location suggestions */}
       {showList && suggestions.length > 0 && (
@@ -51,7 +85,7 @@ export default function BookLocationInput({ location, setLocation }) {
               className="p-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => {
                 setLocation({
-                  locationInText:place.place_name,
+                  locationInText: place.place_name,
                   latitude: place.center[1],
                   longitude: place.center[0]
                 });

@@ -7,10 +7,14 @@ import BookTitleInput from "@/components/BookTitleInput";
 import BookCategoryDropdown from "@/components/BookCategoryInput";
 import Header from "@/components/Header";
 import BookLocationInput from "@/components/BookLocationInput";
-import { AddBook_FN } from "../../../Axios/methods/POST";
+import { AddBook_FN, LOGIN_WITH_GOOGLE_FN } from "../../../Axios/methods/POST";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../firebase";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 export default function AddBooks() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -39,8 +43,37 @@ export default function AddBooks() {
         }
     }
 
+    async function handleSignIn(){
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const response = await LOGIN_WITH_GOOGLE_FN({
+                token:result.user.accessToken,
+                displayName:result.user.displayName,
+                email: result.user.email,
+                photURL: result.user.photoURL,
+            })
+            if (response.data.success) {
+                setUser({
+                    token:result.user.accessToken,
+                    displayName:result.user.displayName,
+                    email: result.user.email,
+                    photURL: result.user.photoURL,
+                })
+              } else {
+                throw new Error('Failed to set authentication cookie');
+              }
+          } catch (error) {
+            // Handle Errors here.
+            console.error("Error during sign-in:", error);
+          }
+    }
+
     async function handleAddBooks() {
         setIsLoading(true)
+        if(!user){
+            console.log("Google login")
+            await handleSignIn()
+        }
         try{
             const response = await AddBook_FN({
                 title,
@@ -51,15 +84,20 @@ export default function AddBooks() {
                 selectedBookCover,
             })
             setIsLoading(false)
+            setTitle("");
+            setDescription("");
+            toast("📚 Book added");
         }catch(err){
+            toast("😭 Something went wrong")
             console.log(err);
             setIsLoading(false);
         }
     }
-
+    
     return (
        <>
        <Header/>
+       <Toaster/>
         <div className="flex h-screen max-h-screen items-center p-10 overflow-hidden">
             <div className="flex flex-col justify-center items-center md:items-start md:w-1/2 md:ms-32 relative">
                 <h1 className="flex-start font-bold md:text-3xl text-2xl">
@@ -104,17 +142,18 @@ export default function AddBooks() {
                 </select>
                 <div className="relative w-72">
                 <BookLocationInput location={location.locationInText} setLocation={setLocation}/>
+                
                 </div>
 
                 <button
                     onClick={handleAddBooks}
-                    className="text-center md:w-72 my-5 px-20 bg-black text-white py-3 rounded-lg shadow-lg hover:bg-gray-800 flex gap-3"
+                    className="text-center md:w-72 my-5 px-6 bg-black text-white py-3 rounded-lg shadow-lg hover:bg-gray-800 flex gap-3"
                 >
                     Add Your Book {isLoading ? (<Loader2 className="animate-spin"/>) : (<>→</>)}
                 </button>
             </div>
             <div className="w-1/2 hidden h-screen py-10 lg:block">
-                <img src={selectedBookCover} alt="image" 
+                <img src={'image.png'} alt="image" 
                 className="object-contain h-full w-full rounded-2xl transition-opacity duration-500 ease-in-out"
                 />
             </div>
