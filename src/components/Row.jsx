@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Row = ( {title, booksList}) => {
   return (
     <div className="py-8 mx-2 md:mx-10 scroll font-sans">
@@ -17,7 +19,7 @@ const Row = ( {title, booksList}) => {
         <div className="flex overflow-x-scroll scrollbar-hide space-x-4 md:py-2">
   {booksList?.length > 0 ? (
     booksList?.map((item, index) => (
-      <div
+      <Link href={`/discover-books/${item._id}`}
         key={index}
         className="md:min-w-[250px] md:max-w-[250px] bg-white rounded-lg shadow-lg md:p-4 flex-shrink-0 border-2"
       >
@@ -28,7 +30,7 @@ const Row = ( {title, booksList}) => {
         />
         <h3 className="md:mt-4 text-base md:text-lg font-semibold">{item?.title}</h3>
         <p className='text-xs text-gray-500 hover:cursor-pointer' title={item?.locationInText} >📍{item?.locationInText?.slice(0,20)}</p>
-      </div>
+      </Link>
     ))
   ) : (
     <></>

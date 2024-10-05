@@ -10,3 +10,5 @@ export const ADD_BOOK_API = `${BASE_URL}/add-books`;
 export const GET_BOOKS_NEAR_API = `${BASE_URL}/nearest-book`;
 export const GET_BOOKS_API = `${BASE_URL}/get-books`;
 export const GET_USER_BOOKS_API = `${BASE_URL}/get-user-books`
+export const GET_BOOK_DEATILS_BY_ID_API = `${BASE_URL}/get-book-details-by-id`;
+export const REQUEST_CALLBACK_API =  `${BASE_URL}/request-callback`;

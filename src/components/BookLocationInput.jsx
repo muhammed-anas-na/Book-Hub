@@ -61,7 +61,6 @@ export default function BookLocationInput({ location, setLocation }) {
       <label htmlFor="location" className="mt-8 text-sm font-semibold">Location</label>
       <div className="flex items-center gap-1">
         <input
-          placeholder="(optional)"
           value={location}
           onChange={(e) => {
             setLocation(e.target.value);
