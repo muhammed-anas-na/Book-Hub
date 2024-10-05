@@ -1,6 +1,6 @@
 
 
-const BASE_URL = process.env.ENVIRONMENT == 'prod' ? ""  : "http://localhost:8000/api";
+const BASE_URL = process.env.NEXT_PUBLIC_ENVIRONMENT == 'prod' ? "https://book-hub-backend-lac.vercel.app/api"  : "http://localhost:8000/api";
 console.log(BASE_URL);
 export const LOGIN_WITH_GOOGLE_API = `${BASE_URL}/google-signin`;
 export const GET_LOCATION_FROM_POINTS_AND_UPDATE_USER_API = `${BASE_URL}/get-location-from-points-and-update-user`;
