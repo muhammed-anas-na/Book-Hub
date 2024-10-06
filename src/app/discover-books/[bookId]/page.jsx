@@ -7,6 +7,8 @@ import CallbackModal from '@/components/CallBackModal';
 import { User } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import BookDetailShimmer from '@/components/BookDetailsShimmer';
+import Link from 'next/link';
+import { FaMapMarkedAlt } from "react-icons/fa";
 
 const Post = () => {
   const { bookId } = useParams();
@@ -24,7 +26,12 @@ const Post = () => {
       }
     })()
   }, [])
-  console.log("Book == > ", book?.length);
+  console.log("Book == > ", book);
+
+  const openGoogleMaps = () => {
+    const url = `https://www.google.com/maps?q=${book.location.coordinates[1]},${book.location.coordinates[0]}`;
+    window.open(url, '_blank');
+  };
   return (
     <>
       <Header />
@@ -50,9 +57,13 @@ const Post = () => {
 
               {/* Book Details */}
               <div className="lg:w-2/3 space-y-6">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
+              <div className='flex justify-between'>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
                   {book?.title || 'Book Title'}
                 </h1>
+
+                <FaMapMarkedAlt onClick={openGoogleMaps} className='border-2 p-2 w-10 h-10 rounded-full hover:cursor-pointer'/>
+              </div>
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
