@@ -34,7 +34,7 @@ export default function About() {
 
                     <div className="flex mt-5 gap-3 mx-2">
                     <div className="flex flex-col border-2 p-2">
-                            <img src="anas.jpeg" alt="" className="w-32 md:w-40"/>
+                            <img src="Anas.jpeg" alt="" className="w-32 md:w-40"/>
                             <h1>Muhammad Anas</h1>
                             <p className="text-xs font-">Founder</p>
                         </div>
