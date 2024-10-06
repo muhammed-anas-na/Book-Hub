@@ -11,8 +11,8 @@ export default function About() {
                 <img src="about.png" className="object-cover" />
             </div>
 
-            <div className="bg-white flex flex-col items-center mt-5 md:mx-72 md:py-32">
-                <h1 className="font-Tangerine text-2xl md:text-6xl font-bold text-gray-500">This is our story</h1>
+            <div className="bg-white flex flex-col items-center mt-5 lg:mx-72 md:py-32">
+                <h1 className="font-Tangerine text-2xl lg:text-6xl font-bold text-gray-500">This is our story</h1>
 
                 <div className="flex flex-col justify-start gap-8 mt-8 max-w-3xl mx-auto text-gray-700 px-5">
                     <p className="text-xs md:text-lg leading-relaxed">
