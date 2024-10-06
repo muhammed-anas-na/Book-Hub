@@ -98,9 +98,9 @@ export default function AddBooks() {
        <>
        <Header/>
        <Toaster/>
-        <div className="flex h-screen max-h-screen items-center p-10 overflow-hidden">
-            <div className="flex flex-col justify-center items-center md:items-start md:w-1/2 md:ms-32 relative">
-                <h1 className="flex-start font-bold md:text-3xl text-2xl">
+        <div className="flex h-screen max-h-screen items-center px-3 md:p-10 overflow-hidden">
+            <div className="flex flex-col md:items-start md:w-1/2 md:ms-32 relative">
+                <h1 className="font-bold md:text-3xl text-2xl">
                     Add <span className='bg-orange-400 text-white px-1'>Books</span>
                 </h1>
                 <p className="text-xs text-gray-500">Increase your collaboration and engagement</p>
