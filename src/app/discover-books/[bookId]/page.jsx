@@ -6,15 +6,17 @@ import Header from '@/components/Header';
 import CallbackModal from '@/components/CallBackModal';
 import { User } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import BookDetailShimmer from '@/components/BookDetailsShimmer';
 
 const Post = () => {
   const { bookId } = useParams();
   const [book, setBooks] = useState();
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState()
   useEffect(() => {
     (async function () {
       try {
         const response = await GET_BOOK_DEATILS_BY_ID_FN(bookId);
+        console.log(response.data);
         setBooks(response.data);
 
       } catch (err) {
@@ -22,14 +24,16 @@ const Post = () => {
       }
     })()
   }, [])
-  console.log("Book == > ", book)
+  console.log("Book == > ", book?.length);
   return (
     <>
       <Header />
       {
         showModal && <CallbackModal setShowModal={setShowModal} bookId={bookId} />
       }
-      <div className="container mx-auto px-4 py-8 max-w-7xl mt-20">
+      {
+        book?.title ? (
+          <div className="container mx-auto px-4 py-8 max-w-7xl mt-20">
         <Card className="overflow-hidden">
           <CardContent className="p-6 border-none">
             <div className="flex flex-col lg:flex-row gap-8">
@@ -55,7 +59,7 @@ const Post = () => {
                   <div className="bg-gray-100 p-2 rounded-full">
                     <User className="w-6 h-6 text-gray-600" />
                   </div>
-                  <span className="text-lg text-gray-700 font-medium">Anass</span>
+                  <span className="text-lg text-gray-700 font-medium">User</span>
                 </div>
 
                 {/* Description */}
@@ -86,6 +90,11 @@ const Post = () => {
           </CardContent>
         </Card>
       </div>
+        ) : (
+          <BookDetailShimmer/>
+        )
+      }
+      
     </>
   );
 };

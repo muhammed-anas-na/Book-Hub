@@ -65,7 +65,8 @@ export const getSuggestionBooks_FN = ()=>{
 
 export const GET_USER_BOOKS_FN = (userId) =>{
     try{
-        return axiosInstance.post(GET_USER_BOOKS_API , userId);
+        console.log("Data send from here " , userId);
+        return axiosInstance.post(GET_USER_BOOKS_API , {userId});
     }catch(err){
         return err;
     }
