@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Link from "next/link";
 
 export default function About() {
     return (
@@ -33,16 +34,16 @@ export default function About() {
 
 
                     <div className="flex mt-5 gap-3 mx-2">
-                    <div className="flex flex-col border-2 p-2">
+                    <Link href={'https://www.linkedin.com/in/anas-na-285267209/'} className="flex flex-col border-2 p-2">
                             <img src="Anas.jpeg" alt="" className="w-32 md:w-40"/>
                             <h1>Muhammad Anas</h1>
                             <p className="text-xs font-">Founder</p>
-                        </div>
-                        <div className="flex flex-col border-2 p-2">
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/aravindreghunath/'} className="flex flex-col border-2 p-2">
                             <img src="aravind.png" alt="" className="w-32 md:w-40"/>
                             <h1>Aravind Reghunath</h1>
                             <p className="text-xs font-">Co-Founder</p>
-                        </div>
+                        </Link>
                     </div>
 
 
