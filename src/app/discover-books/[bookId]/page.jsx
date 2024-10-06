@@ -62,7 +62,7 @@ const Post = () => {
                   {book?.title || 'Book Title'}
                 </h1>
 
-                <FaMapMarkedAlt onClick={openGoogleMaps} className='border-2 p-2 w-10 h-10 rounded-full hover:cursor-pointer'/>
+                <FaMapMarkedAlt title='Open in Google Maps' onClick={openGoogleMaps} className='border-2 p-2 w-10 h-10 rounded-full hover:cursor-pointer'/>
               </div>
 
                 {/* Author Info */}

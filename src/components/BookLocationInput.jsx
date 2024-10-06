@@ -3,10 +3,11 @@ import { useState } from "react";
 import axios from "axios";
 import { TbCurrentLocation } from "react-icons/tb";
 import { getLocationFromPoints_Fn } from "../../Axios/methods/POST";
-
+import { Loader2 } from "lucide-react"
 export default function BookLocationInput({ location, setLocation }) {
   const [suggestions, setSuggestions] = useState([]);
   const [showList, setShowList] = useState(false);
+  const [isLoading, setIsLoadig] = useState(false);
 
   // Function to fetch location suggestions
   async function fetchLocation(query) {
@@ -32,6 +33,7 @@ export default function BookLocationInput({ location, setLocation }) {
 
   //Get current location
   async function getLocation() {
+    setIsLoadig(true)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const latitude = position.coords.latitude;
@@ -45,13 +47,14 @@ export default function BookLocationInput({ location, setLocation }) {
           longitude,
           locationInText: location
         })
+        setIsLoadig(false);
       }, (err) => {
         console.log(err);
-        setIsLoading(false);
+        setIsLoadig(false);
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
-      setIsLoading(false);
+      setIsLoadig(false);
     }
   }
 
@@ -70,7 +73,14 @@ export default function BookLocationInput({ location, setLocation }) {
           name="location"
           className="border rounded-lg focus:outline-0 focus:border-green-800 w-72 p-1"
         />
-        <TbCurrentLocation className="hover:cursor-pointer border w-8 h-8" onClick={getLocation} />
+        {
+          isLoading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <TbCurrentLocation className="hover:cursor-pointer border w-8 h-8" onClick={getLocation} />
+          )
+        }
+       
       </div>
 
 
