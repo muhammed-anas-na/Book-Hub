@@ -30,6 +30,22 @@ export default function About() {
                         Our platform is designed to be user-friendly and accessible, enabling you to discover books listed by people in your vicinity. With just a few clicks, you can request a callback from the book owner and arrange a meetup to exchange or purchase the book. By leveraging the power of sharing and collaboration, we aim to make reading more affordable, convenient, and enjoyable for everyone.
                     </p>
                 </div>
+
+
+                    <div className="flex mt-5 gap-3 mx-2">
+                    <div className="flex flex-col border-2 p-2">
+                            <img src="anas.jpeg" alt="" className="w-32 md:w-40"/>
+                            <h1>Muhammad Anas</h1>
+                            <p className="text-xs font-">Founder</p>
+                        </div>
+                        <div className="flex flex-col border-2 p-2">
+                            <img src="aravind.png" alt="" className="w-32 md:w-40"/>
+                            <h1>Aravind Reghunath</h1>
+                            <p className="text-xs font-">Co-Founder</p>
+                        </div>
+                    </div>
+
+
             </div>
 
             <Footer/>
