@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getBooksNear_FN, getSuggestionBooks_FN } from "../../../Axios/methods/POST";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
+import ShimmerBookRow from "@/components/RowShimmer";
 
 const { default: Header } = require("@/components/Header")
 const { default: Row } = require("@/components/Row")
@@ -12,6 +13,7 @@ const DiscoverBook = () => {
     const [suggestedBooks, setSuggestedBooks] = useState([]);
     const { user } = useContext(UserContext);
     async function getNearestBook() {
+        console.log("HERE")
         const response = await getBooksNear_FN();
         console.log(response.data);
         setNearestBook(response.data);
@@ -40,7 +42,11 @@ const DiscoverBook = () => {
                     nearestBook.length > 0 && <Row title={"Nearest Books"} booksList={nearestBook} />
                 }
                 {
-                    suggestedBooks.length >= 0 && <Row title={"Suggested Books"} booksList={suggestedBooks} />
+                    suggestedBooks.length > 0 ? (
+                        <Row title={"Suggested Books"} booksList={suggestedBooks} />
+                    ) : (
+                        <ShimmerBookRow/>
+                    )
                 }
 
                 
