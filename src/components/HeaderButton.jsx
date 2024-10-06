@@ -18,11 +18,16 @@ export default function HeaderButton() {
                 const longitude = position.coords.longitude;
                 console.log("Latitude: " + latitude);
                 console.log("Longitude: " + longitude);
-                const response = await getLocationFromPointsAndUpdateUser_Fn(latitude, longitude);
-                const location = response.data.locationName;
-                console.log(location)
-                setUser({ ...user, locationInText:location, latitude, longitude})
-                setIsLoading(false);
+                try{
+                    const response = await getLocationFromPointsAndUpdateUser_Fn(latitude, longitude);
+                    const location = response.data.locationName;
+                    console.log(location)
+                    setUser({ ...user, locationInText:location, latitude, longitude})
+                    setIsLoading(false);
+                }catch(err){
+                    setIsLoading(false)
+                    console.log(err);
+                }
             }, (err) => {
                 console.log(err);
                 setIsLoading(false);
