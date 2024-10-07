@@ -9,7 +9,7 @@ const Header = () => {
       {/* Backdrop blur container */}
       <header className="fixed top-0 left-0 right-0 z-40 xl:mx-96 mx-5 my-5 border-2 rounded-full">
         {/* Glass effect background */}
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-full" />
         
         {/* Content container */}
         <div className="relative z-50 flex justify-between items-center max-w-7xl mx-auto md:p-2 p-1">
