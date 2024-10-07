@@ -4,6 +4,8 @@ import { getBooksNear_FN, getSuggestionBooks_FN } from "../../../Axios/methods/P
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 import ShimmerBookRow from "@/components/RowShimmer";
+import CommandDialogDemo from "@/components/SearchBar";
+import KeyboardPrompt from "@/components/SearchLabel";
 
 const { default: Header } = require("@/components/Header")
 const { default: Row } = require("@/components/Row")
@@ -11,6 +13,7 @@ const { default: Row } = require("@/components/Row")
 const DiscoverBook = () => {
     const [nearestBook, setNearestBook] = useState([]);
     const [suggestedBooks, setSuggestedBooks] = useState([]);
+    const [openSearchBar, setOpenSearchBar] = useState(false);
     const { user } = useContext(UserContext);
     async function getNearestBook() {
         console.log("HERE")
@@ -37,7 +40,13 @@ const DiscoverBook = () => {
     return (
         <>
             <Header />
+            
             <div className="mt-20">
+                <KeyboardPrompt setOpenSearchBar={setOpenSearchBar}/>
+               {
+                 openSearchBar &&  <CommandDialogDemo openSearchBar={openSearchBar} setOpenSearchBar={setOpenSearchBar}/>
+               }
+           
                 {
                     nearestBook.length > 0 && <Row title={"Nearest Books"} booksList={nearestBook} />
                 }
