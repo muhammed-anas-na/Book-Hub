@@ -6,6 +6,9 @@ import { UserContext } from "../../../context/userContext";
 import ShimmerBookRow from "@/components/RowShimmer";
 import CommandDialogDemo from "@/components/SearchBar";
 import KeyboardPrompt from "@/components/SearchLabel";
+import CategoryCard from "@/components/CategoryCard";
+import CategoryGrid from "@/components/Category";
+import Footer from "@/components/Footer";
 
 const { default: Header } = require("@/components/Header")
 const { default: Row } = require("@/components/Row")
@@ -57,9 +60,11 @@ const DiscoverBook = () => {
                         <ShimmerBookRow/>
                     )
                 }
-
-                
             </div>
+
+                <CategoryGrid/>
+
+                <Footer/>
         </>
     )
 }
