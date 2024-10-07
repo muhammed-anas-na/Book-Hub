@@ -1,5 +1,7 @@
+"use client"
 import React from 'react';
 import { X, Check } from 'lucide-react';
+import Link from 'next/link';
 
 const ComparisonCard = ({ title, items, isPositive }) => (
   <div className={`p-6 rounded-lg ${isPositive ? 'bg-green-50' : 'bg-red-50'}`}>
@@ -41,6 +43,7 @@ const Comparison = () => {
   ];
 
   return (
+    <>
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-center mb-12">
         What problem we solve for you?
@@ -58,6 +61,15 @@ const Comparison = () => {
         />
       </div>
     </div>
+
+    <div className='flex justify-center'>
+    <Link href="#_" class="relative inline-block px-4 py-2 font-medium group">
+      <span class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+      <span class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+      <span class="relative text-black group-hover:text-white">AI Recomended books ✨</span>
+      </Link>
+    </div>
+    </>
   );
 };
 
