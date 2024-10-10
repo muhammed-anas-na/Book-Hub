@@ -36,7 +36,7 @@ const Post = () => {
     <>
       <Header />
       {
-        showModal && <CallbackModal setShowModal={setShowModal} bookId={bookId} />
+        showModal && <CallbackModal setShowModal={setShowModal} bookId={bookId} title={book.title} selectedBookCover={book.selectedBookCover}/>
       }
       {
         book?.title ? (

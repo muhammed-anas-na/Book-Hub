@@ -12,21 +12,19 @@ export default function Profile() {
     const { user, setUser } = useContext(UserContext);
     const [myBooks, setMyBooks] = useState([])
     const [show, setShow] = useState('details')
-    console.log("User id==>", user?._id)
 
     useEffect(() => {
         (async function () {
-            const response = await GET_USER_BOOKS_FN(user?._id)
+            const response = await GET_USER_BOOKS_FN(user?._id);
             setMyBooks(response.data);
-
         })()
     }, [user])
-
+    console.log("Logged In user ==>" , user);
     return (
         <>
             <Header />
-            <div className="flex h-screen max-h-screen items-center p-10 overflow-hidden">
-                <div className="flex flex-col justify-center items-center md:items-start md:w-1/2 md:ms-32">
+            <div className="flex h-screen max-h-screen items-center md:p-10 overflow-hidden p-2">
+                <div className="flex flex-col justify-center items-start md:w-1/2 md:ms-32">
 
                     <div className="flex justify-evenly w-72 gap-5 my-7 text-gray-700 font-bold">
                         <h1 className={`border-b-2 hover:cursor-pointer ${show == "details" ? "border-blue-500" : "border-gray-500"}`} onClick={()=>{setShow('details')}}>Details</h1>  {/* Only bottom border, blue */}
@@ -60,7 +58,7 @@ export default function Profile() {
                                 </button>
                             </>
                         ) : (
-                        <ListCallback/>
+                        <ListCallback userId={user?._id}/>
                         )
                     }
 

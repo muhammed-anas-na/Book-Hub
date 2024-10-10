@@ -47,11 +47,11 @@ const DiscoverBook = () => {
             <div className="mt-20">
                 <KeyboardPrompt setOpenSearchBar={setOpenSearchBar}/>
                {
-                 openSearchBar &&  <CommandDialogDemo openSearchBar={openSearchBar} setOpenSearchBar={setOpenSearchBar}/>
+                 openSearchBar &&  <CommandDialogDemo isOpen={openSearchBar} setIsOpen={setOpenSearchBar}/>
                }
            
                 {
-                    nearestBook.length > 0 && <Row title={"Nearest Books"} booksList={nearestBook} />
+                    nearestBook?.length > 0 && <Row title={"Nearest Books"} booksList={nearestBook} />
                 }
                 {
                     suggestedBooks.length > 0 ? (

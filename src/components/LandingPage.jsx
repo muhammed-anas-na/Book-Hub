@@ -1,9 +1,11 @@
+"use clinet"
 import Link from 'next/link';
 import React from 'react';
 
 const LandingPage = () => {
     return (
-        <div className="mt-16 min-h-screen flex items-center justify-center bg-white">
+        <>
+        <div className="mt-20 min-h-screen flex items-center justify-center bg-white">
             <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                 {/* Left Section */}
                 <div className="space-y-6">
@@ -68,6 +70,7 @@ const LandingPage = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

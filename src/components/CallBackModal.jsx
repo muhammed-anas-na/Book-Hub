@@ -8,12 +8,20 @@ import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
-export default function CallbackModal({ setShowModal, bookId }) {
+export default function CallbackModal({ setShowModal, bookId, selectedBookCover, title }) {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { user, setUser } = useContext(UserContext)
     async function handleSubmit() {
+        if(name.length < 3){
+            toast("Name should be minimum 3 letters");
+            return;
+        }
+        if(number<10){
+            toast("Invalid number");
+            return;
+        }
         setIsLoading(true)
         if (!user) {
             try {
@@ -49,6 +57,8 @@ export default function CallbackModal({ setShowModal, bookId }) {
                 bookId,
                 number,
                 name,
+                selectedBookCover,
+                title
             })
             toast("📚 Request send successfully")
             setIsLoading(false)
@@ -57,10 +67,9 @@ export default function CallbackModal({ setShowModal, bookId }) {
             setIsLoading(false)
         }
     }
-
     return (
         <div className="fixed inset-0 bg-gray-700 sha bg-opacity-50 flex justify-center items-center z-50">
-<Toaster/>
+            <Toaster />
             <div className="bg-white rounded-lg shadow-lg p-6 w-80 relative">
                 <IoCloseSharp className="absolute right-3 top-3 hover:cursor-pointer" onClick={() => { setShowModal(false) }} />
                 <h2 className="text-lg font-semibold mb-4 text-center">Requeset for callback</h2>
@@ -86,7 +95,7 @@ export default function CallbackModal({ setShowModal, bookId }) {
                 </div>
                 <button className="w-full bg-green-800 text-white py-2 rounded-lg flex gap-3 justify-center" onClick={handleSubmit}>
                     Submit {
-                        isLoading ? (<Loader2 className="animate-spin"/>) : (<>→</>)
+                        isLoading ? (<Loader2 className="animate-spin" />) : (<>→</>)
                     }
                 </button>
             </div>

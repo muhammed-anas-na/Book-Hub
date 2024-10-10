@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import HeaderButton from './HeaderButton';
+import LocationSearchModal from './LocationSearchModal';
 
 const Header = () => {
   return (
     <>
+
       {/* Backdrop blur container */}
       <header className="fixed top-0 left-0 right-0 z-40 xl:mx-96 mx-5 my-5 border-2 rounded-full">
         {/* Glass effect background */}
