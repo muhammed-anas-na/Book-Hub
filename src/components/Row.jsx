@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Row = ({ title, booksList }) => {
+const Row = ({ title, booksList,isMine }) => {
   return (
     <div className="py-8 mx-2 md:mx-10 scroll font-sans">
       <div className='flex justify-between mx-3 md:mx-0 items-center mb-3'>

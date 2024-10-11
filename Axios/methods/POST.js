@@ -91,7 +91,7 @@ export const Request_CallBack_FN = (data)=>{
 
 export const GET_SEARCH_LENGTH_FN = (data)=>{
     try{
-        return axiosInstance.post(GET_SEARCH_LENGTH_API, data);
+        return axiosInstance.post(GET_SEARCH_LENGTH_API, {data});
     }catch(err){
         return err;
     }

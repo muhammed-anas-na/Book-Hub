@@ -4,7 +4,7 @@ import { GET_SEARCH_LENGTH_FN } from '../../Axios/methods/POST';
 
 export default function CommandDialogDemo({ isOpen, setIsOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
-
+  const [data,setData] = useState(null);
   // Close modal with Escape key
   useEffect(() => {
     const handleEscape = (e) => {
@@ -16,14 +16,16 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
   }, [setIsOpen]);
 
 
-  function handleSearchChange(){
+  async function handleSearchChange(val){
     try{
-      const bookLength = GET_SEARCH_LENGTH_FN(searchQuery);
-
+      const response = await GET_SEARCH_LENGTH_FN(val);
+      console.log(response.data)
+      setData(response.data);
     }catch(err){
       console.log("Error while searching on backend : " ,err)
     }
   }
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Overlay */}
@@ -55,7 +57,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value)
-                handleSearchChange();
+                handleSearchChange(e.target.value);
               }}
               placeholder="Search for books, categories or location..."
               className="w-full px-4 py-3 text-gray-600 placeholder-gray-400 bg-transparent border-0 focus:outline-none focus:ring-0"
@@ -94,7 +96,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
                     </svg>
                   }
                   label="Books"
-                  count={10}
+                  count={data?.booksLength}
                 />
                 <CommandItem
                   icon={
@@ -103,7 +105,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
                     </svg>
                   }
                   label="Category"
-                  count={10}
+                  count={data?.categoryLength}
                 />
                 <CommandItem
                   icon={
@@ -113,7 +115,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
                     </svg>
                   }
                   label="Location"
-                  count={10}
+                  count={data?.locations}
                 />
               </div>
             </div>
@@ -173,9 +175,9 @@ function CommandItem({ icon, label, count, shortcut }) {
           {icon}
         </span>
         <span className="flex-grow ml-3">{label}</span>
-        {count !== undefined && (
-          <span className="ml-auto text-xs text-gray-400">{count}</span>
-        )}
+        {
+          count == 0 ? (<span className="ml-auto text-xs text-gray-400">0</span>) : (<span className="ml-auto text-xs text-gray-400">{count}</span>)
+        }
         {shortcut && (
           <kbd className="ml-auto flex-shrink-0 h-5 select-none items-center gap-1 rounded border bg-gray-50 px-1.5 font-mono text-[10px] font-medium text-gray-400">
             {shortcut}

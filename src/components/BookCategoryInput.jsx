@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookCategoryDropdown = () => {
+const BookCategoryDropdown = ({setCategory,category}) => {
   // List of book categories
   const categories = [
     "Text-Books",
@@ -29,7 +29,10 @@ const BookCategoryDropdown = () => {
 
 
   return (
-    <select 
+    <select
+    onChange={(e)=>{
+      setCategory(e.target.value);
+    }}
       name="category"
       className="border rounded-lg focus:outline-0 focus:border-green-800 w-72 p-1"
     >

@@ -72,7 +72,7 @@ export default function Profile() {
             </div>
 
             <div>
-                <Row title={"Your Books"} booksList={myBooks} />
+                <Row title={"Your Books"} booksList={myBooks} isMine={true} />
             </div>
         </>
     )

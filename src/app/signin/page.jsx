@@ -43,8 +43,8 @@ export default function Login() {
           }
     }
     return (
-        <div className="flex h-screen max-h-screen items-center p-10 overflow-hidden">
-            <div className="flex flex-col justify-center items-center md:items-start md:w-1/2 md:ms-32">
+        <div className="flex h-screen items-center justify-center p-10 overflow-hidden">
+            <div className="flex flex-col justify-center items-start md:items-start md:w-1/2 md:ms-32">
                 <h1 className="flex-start font-bold md:text-3xl text-2xl">
                     Book <span className='bg-orange-400 text-white px-1'>Hub</span></h1>
                 <p className="text-xs text-gray-500">Increase your collabration and engagment</p>

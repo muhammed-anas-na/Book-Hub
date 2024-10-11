@@ -18,16 +18,16 @@ export default function AddBooks() {
     const [isLoading, setIsLoading] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [author, setAuthor] = useState("");
     const [willingTo, setWillingTo] = useState("");
     const [location, setLocation] = useState({
         locationInText: user?.locationInText,
         latitude:"",
         longitude:""
     });
+    const [category, setCategory] = useState('');
     const [books, setBooks] = useState([]);
     const [showList, setShowList] = useState(false);
-    const [selectedBookCover, setSelectedBookCover] = useState("/image.png")
+    const [selectedBookCover, setSelectedBookCover] = useState("")
 
     const router = useRouter();
 
@@ -78,10 +78,10 @@ export default function AddBooks() {
             const response = await AddBook_FN({
                 title,
                 description,
-                author,
                 willingTo,
                 location,
                 selectedBookCover,
+                category
             })
             setIsLoading(false)
             setTitle("");
@@ -118,7 +118,7 @@ export default function AddBooks() {
                 </div>
 
                 <label htmlFor="category" className="mt-4 text-sm font-semibold">Category</label>
-                <BookCategoryDropdown/>
+                <BookCategoryDropdown setCategory={setCategory} category={category}/>
 
                 <label htmlFor="description" className="mt-4 text-sm font-semibold">Description</label>
                 <textarea 

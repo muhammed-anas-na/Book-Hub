@@ -5,7 +5,7 @@ import React from 'react';
 const LandingPage = () => {
     return (
         <>
-        <div className="mt-20 min-h-screen flex items-center justify-center bg-white">
+        <div className="mt-20 flex items-center justify-center bg-white">
             <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                 {/* Left Section */}
                 <div className="space-y-6">
@@ -64,7 +64,7 @@ const LandingPage = () => {
                     <div className="absolute md:-bottom-3 md:left-0 -bottom-8 -left-8 w-48 bg-white shadow-md md:p-3 p-2 rounded-md text-xs md:text-base">
                         <span role="img" aria-label="icon">❤️</span> Where do I go in case of an emergency?
                     </div>
-                    <div className="absolute md:top-60 md:right-0 bottom-5 -right-5 w-48 bg-white shadow-md md:p-3 p-2 rounded-md text-xs md:text-base">
+                    <div className="absolute bottom-0 md:right-0 -right-5 w-48 bg-white shadow-md md:p-3 p-2 rounded-md text-xs md:text-base">
                         <span role="img" aria-label="icon">🍹</span> Any recommendation for a rooftop bar to meet friends?
                     </div>
                 </div>
