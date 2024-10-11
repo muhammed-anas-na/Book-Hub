@@ -89,6 +89,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
             <div className="px-2 mb-4">
               <p className="text-xs font-semibold text-gray-400 mb-2">Suggestions</p>
               <div className="space-y-1">
+                <Link href={`/search?q=${searchQuery}`}>
                 <CommandItem
                   icon={
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,6 +99,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
                   label="Books"
                   count={data?.booksLength}
                 />
+                </Link>
                 <CommandItem
                   icon={
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
