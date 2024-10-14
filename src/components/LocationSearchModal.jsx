@@ -56,7 +56,7 @@ const LocationSearchModal = () => {
   }, 300);
 
   const handleLocationSelect = (location) => {
-    const response =  getLocationFromPointsAndUpdateUser_Fn(latitude, longitude);
+    const response =  getLocationFromPointsAndUpdateUser_Fn(location.center[1], location.center[0]);
     setUser({
       ...user,
       locationInText: location.place_name,

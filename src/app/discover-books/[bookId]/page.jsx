@@ -7,7 +7,6 @@ import CallbackModal from '@/components/CallBackModal';
 import { User } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import BookDetailShimmer from '@/components/BookDetailsShimmer';
-import Link from 'next/link';
 import { FaMapMarkedAlt } from "react-icons/fa";
 
 const Post = () => {

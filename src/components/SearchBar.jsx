@@ -4,52 +4,52 @@ import { GET_SEARCH_LENGTH_FN } from '../../Axios/methods/POST';
 
 export default function CommandDialogDemo({ isOpen, setIsOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [data,setData] = useState(null);
+  const [data, setData] = useState(null);
   // Close modal with Escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') setIsOpen(false);
     };
-    
+
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
   }, [setIsOpen]);
 
 
-  async function handleSearchChange(val){
-    try{
+  async function handleSearchChange(val) {
+    try {
       const response = await GET_SEARCH_LENGTH_FN(val);
       console.log(response.data)
       setData(response.data);
-    }catch(err){
-      console.log("Error while searching on backend : " ,err)
+    } catch (err) {
+      console.log("Error while searching on backend : ", err)
     }
   }
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Overlay */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/50"
         onClick={() => setIsOpen(false)}
       />
-      
+
       {/* Modal */}
       <div className="relative min-h-screen flex items-start justify-center pt-20">
         <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-2xl mx-4 overflow-hidden">
           {/* Search input */}
           <div className="flex items-center px-4 border-b">
-            <svg 
+            <svg
               className="h-4 w-4 text-gray-400"
-              fill="none" 
-              stroke="currentColor" 
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
             <input
@@ -63,21 +63,21 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
               className="w-full px-4 py-3 text-gray-600 placeholder-gray-400 bg-transparent border-0 focus:outline-none focus:ring-0"
               autoFocus
             />
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="p-1 hover:bg-gray-100 rounded"
             >
-              <svg 
+              <svg
                 className="h-4 w-4 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M6 18L18 6M6 6l12 12" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
@@ -89,26 +89,51 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
             <div className="px-2 mb-4">
               <p className="text-xs font-semibold text-gray-400 mb-2">Suggestions</p>
               <div className="space-y-1">
-                <Link href={`/search?q=${searchQuery}`}>
-                <CommandItem
-                  icon={
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  }
-                  label="Books"
-                  count={data?.booksLength}
-                />
+                <Link href={{
+                  pathname: '/search',
+                  query: {
+                    q: searchQuery,
+                    type: 'books',
+                    count: data?.booksLength || 0
+                  },
+                }}>
+                  <CommandItem
+                    icon={
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    }
+                    label="Books"
+                    count={data?.booksLength}
+                  />
                 </Link>
-                <CommandItem
-                  icon={
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-                    </svg>
-                  }
-                  label="Category"
-                  count={data?.categoryLength}
-                />
+                <Link href={{
+                  pathname: '/search',
+                  query: {
+                    q: searchQuery,
+                    type: 'category',
+                    count: data?.categoryLength || 0
+                  },
+                }}>
+                  <CommandItem
+                    icon={
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                      </svg>
+                    }
+                    label="Category"
+                    count={data?.categoryLength}
+                  />
+                </Link>
+
+                <Link href={{
+                  pathname: '/search',
+                  query: {
+                    q: searchQuery,
+                    type: 'locations',
+                    count: data?.locations || 0
+                  },
+                }}>
                 <CommandItem
                   icon={
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,6 +144,7 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
                   label="Location"
                   count={data?.locations}
                 />
+                </Link>
               </div>
             </div>
 
@@ -130,15 +156,15 @@ export default function CommandDialogDemo({ isOpen, setIsOpen }) {
               <p className="text-xs font-semibold text-gray-400 mb-2">Settings</p>
               <div className="space-y-1">
                 <Link href={'/profile'}>
-                <CommandItem
-                  icon={
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  }
-                  label="Profile"
-                  shortcut="⌘P"
-                />
+                  <CommandItem
+                    icon={
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    }
+                    label="Profile"
+                    shortcut="⌘P"
+                  />
                 </Link>
                 <CommandItem
                   icon={
