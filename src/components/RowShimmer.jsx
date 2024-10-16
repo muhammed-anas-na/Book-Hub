@@ -23,7 +23,7 @@ const ShimmerBookRow = () => {
                 className="md:min-w-[250px] md:max-w-[250px] min-w-[200px] bg-white rounded-lg shadow-lg md:p-4 p-2 flex-shrink-0 border-2"
               >
                 {/* Image Shimmer */}
-                <div className="w-60 h-72 bg-gray-200 rounded-lg animate-pulse" />
+                <div className="w-full h-72 bg-gray-200 rounded-lg animate-pulse" />
                 
                 {/* Title Shimmer */}
                 <div className="md:mt-4 mt-2 h-6 bg-gray-200 rounded-md animate-pulse" />
