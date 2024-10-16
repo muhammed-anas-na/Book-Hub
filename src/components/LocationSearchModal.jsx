@@ -118,7 +118,7 @@ const LocationSearchModal = () => {
             <Button
               onClick={getLocation}
               disabled={isLoading}
-              className="flex items-center gap-2 bg-[#4CAF50] hover:bg-[#45a049]"
+              className="flex items-center gap-2 bg-black hover:bg-gray-800"
             >
               {isLoading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

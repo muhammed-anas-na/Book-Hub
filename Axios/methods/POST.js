@@ -47,9 +47,11 @@ export const AddBook_FN= (data)=>{
         return err;
     }
 }
-export const getBooksNear_FN = ()=>{
+export const getBooksNear_FN = (distance)=>{
     try{
-        return axiosInstance.post(GET_BOOKS_NEAR_API);
+        return axiosInstance.post(GET_BOOKS_NEAR_API,{
+            distance
+        });
     }catch(err){
         return err;
     }

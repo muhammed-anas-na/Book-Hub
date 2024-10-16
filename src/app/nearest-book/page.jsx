@@ -1,37 +1,41 @@
 "use client"
 import Header from "@/components/Header";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { GET_SEARCH_RESULT_FN } from "../../../Axios/methods/POST";
+import { useContext, useEffect, useState } from "react";
+import { GET_SEARCH_RESULT_FN, getBooksNear_FN } from "../../../Axios/methods/POST";
 import KeyboardPrompt from "@/components/SearchLabel";
 import CommandDialogDemo from "@/components/SearchBar";
+import { UserContext } from "../../../context/userContext";
+import FilterDistance from "@/components/FilterDistance";
+import FilterDistanceLabel from "@/components/FilterDistanceLabel";
 
-export default function SearchResult({ searchParams }){
-    const [openSearchBar, setOpenSearchBar] = useState(false);
-    const query = searchParams.q;
-    const type = searchParams.type;
-    const count = searchParams.count;
-    const [data,setData] = useState([])
+export default function SearchResult(){
+    const {user} = useContext(UserContext);
+    const [data,setNearestBook] = useState([])
+    const [open, setOpen] = useState(false);
+    const [distance, setDistance] = useState(5)
+
+    async function getNearestBook() {
+        console.log("HERE")
+        const response = await getBooksNear_FN(distance);
+        console.log(response.data);
+        setNearestBook(response.data);
+    }
+
     useEffect(()=>{
-        (async function(){
-            const response = await GET_SEARCH_RESULT_FN({
-                query,
-                type
-            })
-            console.log("Data =>",response.data);
-            setData(response.data);
-        })()
-    },[])
-
+        if (user?.locationInText) {
+            console.log("Getting nearst books");
+            getNearestBook()
+        }
+    },[user,distance])
     console.log("Books==>",data)
     return(
        <>
         <Header/>
-        {/* <KeyboardPrompt setOpenSearchBar={setOpenSearchBar}/>
+        <FilterDistanceLabel setOpen={setOpen}/>
         {
-            openSearchBar &&  <CommandDialogDemo isOpen={openSearchBar} setIsOpen={setOpenSearchBar}/>
-        } */}
-
+            open && <FilterDistance setOpen={setOpen} distance={distance} setDistance={setDistance}/>
+        }
         <div className="mt-28 flex justify-center mx-44 flex-wrap gap-5">
             {
                 data?.map((val)=>{

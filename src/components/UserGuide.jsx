@@ -8,9 +8,9 @@ const CategoryCard = ({ icon, title, description }) => (
     </div>
     <h3 className=" text-2xl font-bold mb-2">{title}</h3>
     <p className=" mb-4">{description}</p>
-    <button className=" flex items-center">
+    {/* <button className=" flex items-center">
       SHOP <ArrowUpRight className="ml-1" size={16} />
-    </button>
+    </button> */}
   </div>
 );
 
@@ -50,7 +50,7 @@ const ExploreCategories = () => {
         <CategoryCard
           icon={<PhoneIncoming className="w-8 h-8" />}
           title="05. Request callback"
-          description="Get personalized assistance from our book experts."
+          description="Let the other person know that you are intrested in the book."
         />
         <CategoryCard
           icon={<HandCoins className="w-8 h-8" />}
