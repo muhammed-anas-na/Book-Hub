@@ -31,15 +31,9 @@ const Footer = () => {
           {/* Logo Column */}
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center">
-              <div className="flex items-center">
-                <div className="h-8 w-8 bg-black rounded">
-                  {/* Replace with your logo */}
-                  <div className="h-full w-full text-white flex items-center justify-center">
-                    📚
-                  </div>
-                </div>
-                <span className="ml-2 text-xl font-semibold">BookIn</span>
-              </div>
+            <span className="flex items-center space-x-2">
+                <span className="text-lg font-bold text-gray-900 font-sans">Read <span className='bg-[#F76B19] text-white px-1'>In</span></span>
+              </span>
             </a>
           </div>
 

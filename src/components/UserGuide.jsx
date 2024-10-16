@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUpRight, CircleUserRound, HandCoins, LibraryBig, MapPinCheck, PhoneIncoming, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 const CategoryCard = ({ icon, title, description }) => (
-  <div className="bg-dark-green p-6 flex flex-col items-start border hover:scale-110 duration-700 hover:z-10 hover:bg-pink-100">
+  <div className="rounded-lg hover:rounded-2xl bg-dark-green p-6 flex flex-col items-start border hover:scale-110 duration-700 hover:z-10 hover:bg-[#F76B19] hover:text-black">
     <div className="bg-white rounded-full p-2 mb-4">
       {icon}
     </div>
@@ -15,7 +15,7 @@ const ExploreCategories = () => {
   return (
     <div className="bg-[#E7CCCC] text-gray-600 py-20 md:px-24 px-2 mt-20 shadow-inner">
       <div className="flex flex-col gap-2 md:flex-row justify-between items-center mb-8">
-        <h2 className="text-lg md:text-4xl font-bold ">How to get started ?</h2>
+        <h2 className="text-lg md:text-4xl font-bold hover:text-black duration-700 ">How to get started ?</h2>
         <Link href="/discover-books" class="relative inline-flex items-center justify-start inline-block md:px-5 md:py-3 overflow-hidden font-bold rounded-full group">
             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
             <span class="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-8"></span>
