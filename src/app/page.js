@@ -3,6 +3,7 @@ import LandingPage from "@/components/LandingPage";
 import Footer from "@/components/Footer";
 import Comparison from "@/components/Comparisons";
 import ExploreCategories from "@/components/UserGuide";
+import FaqSection from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
     <LandingPage/>
     <Comparison/>
     <ExploreCategories/>
+    <FaqSection/>
     <Footer/>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowUpRight, CircleUserRound, HandCoins, LibraryBig, MapPinCheck, PhoneIncoming, Sparkles } from 'lucide-react';
-import { Linkedin } from 'lucide-react';
+import Link from 'next/link';
 const CategoryCard = ({ icon, title, description }) => (
-  <div className="bg-dark-green p-6 flex flex-col items-start border hover:scale-110 duration-700 hover:z-50 hover:bg-pink-100">
+  <div className="bg-dark-green p-6 flex flex-col items-start border hover:scale-110 duration-700 hover:z-10 hover:bg-pink-100">
     <div className="bg-white rounded-full p-2 mb-4">
       {icon}
     </div>
@@ -13,15 +13,15 @@ const CategoryCard = ({ icon, title, description }) => (
 
 const ExploreCategories = () => {
   return (
-    <div className="bg-[#789DBC] text-black p-8 px-24 mt-20">
+    <div className="bg-[#789DBC] text-black py-20 px-24 mt-20 shadow-xl">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-bold ">How to get started ?</h2>
-        <a href="#_" class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
+        <Link href="/discover-books" class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
             <span class="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-8"></span>
             <span class="relative w-full text-left text-black transition-colors duration-200 ease-in-out group-hover:text-white">Discover Books</span>
             <span class="absolute inset-0 border-2 border-black rounded-full"></span>
-        </a>
+        </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <CategoryCard

@@ -7,25 +7,25 @@ const categories = [
     title: 'Text Book', 
     color: 'bg-red-500', 
     image: 'school-textbook.jpg',
-    href: '/technology'
+    href: '/search?q=TextBook&&type=books'
   },
   { 
     title: 'Self Improvenment', 
     color: 'bg-blue-600', 
     image: 'self-improvement.jpg',
-    href: '/design'
+    href: '/search?q=&&type=books'
   },
   { 
     title: 'Fiction', 
     color: 'bg-emerald-600', 
     image: 'fiction-book.jpg',
-    href: '/business'
+    href: '/search?q=fiction&&type=books'
   },
   { 
     title: 'Kids', 
     color: 'bg-orange-500', 
     image: 'kids-book.jpg',
-    href: '/marketing'
+    href: '/search?q=kids&&type=books'
   }
 ];
 

@@ -2,10 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const CategoryCard = ({name,bgColor,image}) => {
+const CategoryCard = ({name,bgColor,image,url}) => {
   return (
     <Link 
-      href={`/blog?cat=`} 
+      href={url} 
       className="flex items-center justify-center gap-3 p-4 rounded-lg transition-transform hover:transform hover:scale-105"
       style={{ backgroundColor: bgColor }}
     >

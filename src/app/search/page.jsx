@@ -19,7 +19,7 @@ export default function SearchResult({ searchParams }){
                 type
             })
             console.log("Data =>",response.data);
-            setData(response.data);
+            setData(response.data || []);
         })()
     },[])
 
