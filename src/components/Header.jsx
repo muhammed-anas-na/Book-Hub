@@ -19,7 +19,7 @@ const Header = () => {
           <div className="flex items-center">
             <Link href="/">
               <span className="flex items-center space-x-2">
-                <span className="text-lg font-bold text-gray-900 font-sans">Book <span className='bg-orange-400 text-white px-1'>Hub</span></span>
+                <span className="text-lg font-bold text-gray-900 font-sans">Read <span className='bg-[#F76B19] text-white px-1'>In</span></span>
               </span>
             </Link>
           </div>

@@ -101,8 +101,10 @@ const LocationSearchModal = () => {
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <span className="text-lg font-normal">Welcome to</span>
-            <span className="text-lg font-bold text-[#4CAF50]">Book Hub</span>
+            <span className="text-lg font-normal">Welcome to</span>              
+            <span className="flex items-center space-x-2">
+                <span className="text-lg font-bold text-gray-900 font-sans">Read <span className='bg-[#F76B19] text-white px-1'>In</span></span>
+              </span>
           </DialogTitle>
         </DialogHeader>
 

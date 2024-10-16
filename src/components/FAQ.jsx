@@ -7,7 +7,7 @@ import { Toaster } from 'sonner';
 
 const faqData = [
     {
-        question: "Can I earn money from Book Hub?",
+        question: "Can I earn money from BookIn?",
         answer: "Absolutely! You can rent or sell your books on your shelf and earn some extra cash."
     },
     {

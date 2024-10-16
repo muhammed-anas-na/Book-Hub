@@ -16,7 +16,7 @@ export default function About() {
 
                 <div className="flex flex-col justify-start gap-8 mt-8 max-w-3xl mx-auto text-gray-700 px-5">
                     <p className="text-xs md:text-lg leading-relaxed">
-                        Welcome to <span className="font-semibold text-gray-900">Book Hub</span>, a platform born out of a passion to solve real-world problems and make a meaningful impact on our society. As two young entrepreneurs, we embarked on our development journey in our early twenties, driven by a desire to create innovative solutions that make a difference.
+                        Welcome to <span className="font-semibold text-gray-900">Book In</span>, a platform born out of a passion to solve real-world problems and make a meaningful impact on our society. As two young entrepreneurs, we embarked on our development journey in our early twenties, driven by a desire to create innovative solutions that make a difference.
                     </p>
 
                     <p className="text-xs md:text-lg leading-relaxed">
@@ -24,7 +24,7 @@ export default function About() {
                     </p>
 
                     <p className="text-xs md:text-lg leading-relaxed">
-                        This sparked an idea – what if we could create a platform that connects book lovers, allowing them to share, exchange, or sell their gently used books? <span className="font-semibold text-gray-900">Book Hub</span> was born, with the mission of bridging the gap between book owners and seekers, while promoting sustainability and community engagement.
+                        This sparked an idea – what if we could create a platform that connects book lovers, allowing them to share, exchange, or sell their gently used books? <span className="font-semibold text-gray-900">BookIn</span> was born, with the mission of bridging the gap between book owners and seekers, while promoting sustainability and community engagement.
                     </p>
 
                     <p className="text-xs md:text-lg leading-relaxed">

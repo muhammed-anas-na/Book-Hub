@@ -38,7 +38,7 @@ const Footer = () => {
                     📚
                   </div>
                 </div>
-                <span className="ml-2 text-xl font-semibold">BOOK HUB</span>
+                <span className="ml-2 text-xl font-semibold">BookIn</span>
               </div>
             </a>
           </div>

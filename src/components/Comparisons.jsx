@@ -50,12 +50,12 @@ const Comparison = () => {
       </h1>
       <div className="grid md:grid-cols-2 gap-6">
         <ComparisonCard 
-          title="You'r reading habbit without Book Hub" 
+          title="You'r reading habbit without BookIn" 
           items={withoutZenVoice} 
           isPositive={false} 
         />
         <ComparisonCard 
-          title="Your reading habbit + Book Hub ⚡️" 
+          title="Your reading habbit + BookIn ⚡️" 
           items={withBookHub} 
           isPositive={true} 
         />

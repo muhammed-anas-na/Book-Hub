@@ -1,13 +1,8 @@
-"use client";
 import CategoryCard from "@/components/CategoryCard";
 import Header from "@/components/Header";
-import CommandDialogDemo from "@/components/SearchBar";
-import KeyboardPrompt from "@/components/SearchLabel";
-import { useState } from "react";
 
 
 export default function AllCategories(){
-  const [openSearchBar, setOpenSearchBar] = useState(false);
   const categories = [
     { name: 'TextBooks', color: '#8d6e6333', image: "", url: `/search?q=text-Books&type=category` },
     { name: 'fiction', color: '#57c4ff31', image: "", url: `/search?q=fiction&type=category` },
@@ -57,10 +52,10 @@ export default function AllCategories(){
     return(
         <>
         <Header/>
-        <KeyboardPrompt setOpenSearchBar={setOpenSearchBar}/>
+        {/* <KeyboardPrompt setOpenSearchBar={setOpenSearchBar}/>
                {
                  openSearchBar &&  <CommandDialogDemo openSearchBar={openSearchBar} setOpenSearchBar={setOpenSearchBar}/>
-               }
+               } */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-16 lg:mt-28">
         <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5">
         {categories.map((cat) => (
