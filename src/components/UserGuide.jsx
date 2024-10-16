@@ -13,10 +13,10 @@ const CategoryCard = ({ icon, title, description }) => (
 
 const ExploreCategories = () => {
   return (
-    <div className="bg-[#E7CCCC] text-gray-600 py-20 px-24 mt-20 shadow-inner">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-4xl font-bold ">How to get started ?</h2>
-        <Link href="/discover-books" class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
+    <div className="bg-[#E7CCCC] text-gray-600 py-20 md:px-24 px-2 mt-20 shadow-inner">
+      <div className="flex flex-col gap-2 md:flex-row justify-between items-center mb-8">
+        <h2 className="text-lg md:text-4xl font-bold ">How to get started ?</h2>
+        <Link href="/discover-books" class="relative inline-flex items-center justify-start inline-block md:px-5 md:py-3 overflow-hidden font-bold rounded-full group">
             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-white opacity-[3%]"></span>
             <span class="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-8"></span>
             <span class="relative w-full text-left text-black transition-colors duration-200 ease-in-out group-hover:text-white">Discover Books</span>
@@ -55,11 +55,6 @@ const ExploreCategories = () => {
           description="Turn your old books into cash by listing them on our platform."
         />
       </div>
-      {/* <div className="fixed bottom-4 right-4">
-        <button className="bg-black text-white p-4 rounded-full">
-          <span className="mr-2">👋</span> Chat
-        </button>
-      </div> */}
     </div>
   );
 };
