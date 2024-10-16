@@ -55,11 +55,11 @@ const ExploreCategories = () => {
           description="Turn your old books into cash by listing them on our platform."
         />
       </div>
-      <div className="fixed bottom-4 right-4">
+      {/* <div className="fixed bottom-4 right-4">
         <button className="bg-black text-white p-4 rounded-full">
           <span className="mr-2">👋</span> Chat
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

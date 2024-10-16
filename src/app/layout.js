@@ -35,6 +35,21 @@ export default function RootLayout({ children }) {
           {children}
           <SpeedInsights />
         </UserProvider>
+       
+        <div dangerouslySetInnerHTML={{
+        __html: `
+          <script>
+            window.$zoho = window.$zoho || {};
+            $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+          </script>
+          <script 
+            id="zsiqscript" 
+            src="https://salesiq.zohopublic.in/widget?wc=siq10bcfa688555348f5a53fa4518130f87980381bb607b84b3ec22e384fdf0d990" 
+            defer>
+          </script>
+        `
+      }} />
+
       </body>
     </html>
   );
