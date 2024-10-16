@@ -33,7 +33,7 @@ export default function About() {
                 </div>
 
 
-                    <div className="flex mt-5 gap-3 mx-2">
+                    {/* <div className="flex mt-5 gap-3 mx-2">
                     <Link href={'https://www.linkedin.com/in/anas-na-285267209/'} className="flex flex-col border-2 p-2">
                             <img src="Anas.jpeg" alt="" className="w-32 md:w-40"/>
                             <h1>Muhammad Anas</h1>
@@ -44,7 +44,7 @@ export default function About() {
                             <h1>Aravind Reghunath</h1>
                             <p className="text-xs font-">Co-Founder</p>
                         </Link>
-                    </div>
+                    </div> */}
 
 
             </div>

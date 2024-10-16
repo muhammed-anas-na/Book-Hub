@@ -19,7 +19,6 @@ export default function Profile() {
             setMyBooks(response.data);
         })()
     }, [user])
-    console.log("Logged In user ==>" , user);
     return (
         <>
             <Header />

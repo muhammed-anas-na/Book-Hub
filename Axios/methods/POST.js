@@ -1,5 +1,5 @@
 import axiosInstance from "../axiosInstance";
-import {GET_SEARCH_RESULT_API,GET_USER_QUERIES_API,REQUEST_CALLBACK_API,GET_BOOK_DEATILS_BY_ID_API, GET_USER_BOOKS_API, GET_LOCATION_FROM_POINTS_API,GET_LOGGED_IN_USER, LOGIN_WITH_GOOGLE_API,ADD_BOOK_API, GET_BOOKS_NEAR_API, GET_BOOKS_API, GET_LOCATION_FROM_POINTS_AND_UPDATE_USER_API, GET_SEARCH_LENGTH_API } from "../endpoints";
+import {DELETE_BOOK_API,GET_SEARCH_RESULT_API,GET_USER_QUERIES_API,REQUEST_CALLBACK_API,GET_BOOK_DEATILS_BY_ID_API, GET_USER_BOOKS_API, GET_LOCATION_FROM_POINTS_API,GET_LOGGED_IN_USER, LOGIN_WITH_GOOGLE_API,ADD_BOOK_API, GET_BOOKS_NEAR_API, GET_BOOKS_API, GET_LOCATION_FROM_POINTS_AND_UPDATE_USER_API, GET_SEARCH_LENGTH_API } from "../endpoints";
 
 export const LOGIN_WITH_GOOGLE_FN = (data) =>{
     try{
@@ -111,6 +111,15 @@ export const GET_SEARCH_RESULT_FN = (data)=>{
     try{
         console.log("Result calling");
         return axiosInstance.post(GET_SEARCH_RESULT_API, data);
+    }catch(err){
+        return err;
+    }
+}
+
+export const DELTE_BOOK_FN = (productId)=>{
+    try{
+        console.log("Delete this pr =>" , productId);
+        return axiosInstance.post(DELETE_BOOK_API, {productId});
     }catch(err){
         return err;
     }

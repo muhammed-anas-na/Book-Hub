@@ -2,21 +2,18 @@ import React from 'react';
 import { ArrowUpRight, CircleUserRound, HandCoins, LibraryBig, MapPinCheck, PhoneIncoming, Sparkles } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 const CategoryCard = ({ icon, title, description }) => (
-  <div className="bg-dark-green p-6 flex flex-col items-start border border-pink-800 hover:scale-110 duration-700 hover:z-50 hover:bg-pink-100">
+  <div className="bg-dark-green p-6 flex flex-col items-start border hover:scale-110 duration-700 hover:z-50 hover:bg-pink-100">
     <div className="bg-white rounded-full p-2 mb-4">
       {icon}
     </div>
     <h3 className=" text-2xl font-bold mb-2">{title}</h3>
     <p className=" mb-4">{description}</p>
-    {/* <button className=" flex items-center">
-      SHOP <ArrowUpRight className="ml-1" size={16} />
-    </button> */}
   </div>
 );
 
 const ExploreCategories = () => {
   return (
-    <div className="bg-pink-50 text-pink-700 p-8 px-24 mt-20">
+    <div className="bg-[#789DBC] text-black p-8 px-24 mt-20">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-bold ">How to get started ?</h2>
         <a href="#_" class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">
