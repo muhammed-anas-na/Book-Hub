@@ -13,7 +13,7 @@ const CategoryCard = ({ icon, title, description }) => (
 
 const ExploreCategories = () => {
   return (
-    <div className="bg-[#789DBC] text-black py-20 px-24 mt-20 shadow-xl">
+    <div className="bg-[#E7CCCC] text-gray-600 py-20 px-24 mt-20 shadow-inner">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-bold ">How to get started ?</h2>
         <Link href="/discover-books" class="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group">

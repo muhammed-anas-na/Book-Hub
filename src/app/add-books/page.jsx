@@ -12,6 +12,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../firebase";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function AddBooks() {
     const { user, setUser } = useContext(UserContext);
@@ -69,10 +70,34 @@ export default function AddBooks() {
     }
 
     async function handleAddBooks() {
+        toast(
+            <div className="flex gap-3">
+                <h1>📚 Book added </h1>
+                <Link href={'/'} className="bg-green-600 text-white px-2 rounded-md">View</Link>
+            </div>
+        );
+        return;
         setIsLoading(true)
         if(!user){
             console.log("Google login")
             await handleSignIn()
+        }
+        if(!title){
+            toast("Please select a title");
+            setIsLoading(false)
+            return;
+        }else if(!category){
+            toast("Select a cateogry");
+            setIsLoading(false)
+            return;
+        }else if(!willingTo){
+            toast("Select willing to");
+            setIsLoading(false)
+            return;
+        }else if(!location.locationInText){
+            toast("Select a location");
+            setIsLoading(false)
+            return;
         }
         try{
             const response = await AddBook_FN({
@@ -86,7 +111,9 @@ export default function AddBooks() {
             setIsLoading(false)
             setTitle("");
             setDescription("");
-            toast("📚 Book added");
+            toast(
+                <div>📚 Book added <button className="bg-green-600 text-white">View</button></div>
+            );
         }catch(err){
             toast("😭 Something went wrong")
             console.log(err);
