@@ -70,13 +70,6 @@ export default function AddBooks() {
     }
 
     async function handleAddBooks() {
-        toast(
-            <div className="flex gap-3">
-                <h1>📚 Book added </h1>
-                <Link href={'/'} className="bg-green-600 text-white px-2 rounded-md">View</Link>
-            </div>
-        );
-        return;
         setIsLoading(true)
         if(!user){
             console.log("Google login")
@@ -112,7 +105,10 @@ export default function AddBooks() {
             setTitle("");
             setDescription("");
             toast(
-                <div>📚 Book added <button className="bg-green-600 text-white">View</button></div>
+                <div className="flex gap-3">
+                    <h1>📚 Book added </h1>
+                    <Link href={'/discover-books'} className="bg-green-600 text-white px-2 rounded-md">View</Link>
+                </div>
             );
         }catch(err){
             toast("😭 Something went wrong")
