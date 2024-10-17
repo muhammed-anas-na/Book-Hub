@@ -1,4 +1,5 @@
 import { Github, Twitter, Linkedin, Youtube } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => {
   const navigation = {
@@ -18,9 +19,9 @@ const Footer = () => {
       { name: 'Newsletter', href: '#' },
     ],
     company: [
-      { name: 'About', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Contact and Support', href: '#' },
+      { name: 'About', href: '/about' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Contact and Support', href: '' },
     ],
   };
 
@@ -143,10 +144,10 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-gray-500">
+              <Link href="https://github.com/muhammed-anas-na/Book-Hub" className="text-gray-400 hover:text-gray-500">
                 <Github className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
+              </Link>
+              {/* <a href="" className="text-gray-400 hover:text-gray-500">
                 <Twitter className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-gray-500">
@@ -154,7 +155,7 @@ const Footer = () => {
               </a>
               <a href="#" className="text-gray-400 hover:text-gray-500">
                 <Youtube className="h-6 w-6" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
